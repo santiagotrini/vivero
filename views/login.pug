@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .row.mt-5
+    .col-4
+    .col-4
+      h2 Iniciar sesión
+      form(class='mb-5' method='post' action='/login')
+        .form-group
+          input(class='form-control' placeholder='Usuario' type='text' name='username')
+        .form-group
+          input(class='form-control' placeholder='Contraseña' type='password' name='password')   
+        button(type='submit' class='btn btn-primary') Ingresar
+      

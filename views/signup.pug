@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .row.mt-5
+    .col-4
+    .col-4
+      h2 Registrarse
+      form(method='post' action='/user')
+        .form-group
+          input(class='form-control' placeholder='Usuario' type='text' name='username')
+        .form-group
+          input(class='form-control' placeholder='Contraseña' type='password' name='password')   
+        button(type='submit' class='btn btn-primary') Registrarse
+    .col-4          
