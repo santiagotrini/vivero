@@ -1,4 +1,16 @@
 extends layout
 
 block content
-  h1 Bienvenido #{user.username}, estas en modo #{user.role}.
+  .row.mt-5
+    .col-3
+    .col-6
+      h2 Hola, #{user.username}. Estas en modo #{user.role}.    
+      hr
+      if (user.role == 'admin')
+        p Tenes control total.
+      else 
+        p Sos un usuario comun.    
+      hr  
+      h4.text-center.mt-5
+        a(href='/logout') Cerrar sesión        
+    .col-3    
