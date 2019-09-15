@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const reading = require('../controllers/reading')
+const reading = require('../controllers/reading');
+const user = require('../controllers/user');
 // site routes
 
 // landing page
@@ -39,8 +40,6 @@ router.get('/logout',
 router.get('/signup', (req, res) => {
   res.render('signup');
 });
-router.post('/signup', (req, res) => {
-  res.send('TODO');
-});
+router.post('/signup', user.save);
 
 module.exports = router;

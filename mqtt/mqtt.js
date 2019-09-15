@@ -7,16 +7,16 @@ const mqtt = require('mqtt');
 const client  = mqtt.connect('mqtt://localhost');
 
 client.on('connect', () => {
-  client.subscribe('hola', err => {
+  // subscribe topics on connection
+  console.log('Connected to MQTT broker');
+  client.subscribe('temp', err => {
     if (!err) {
-      client.publish('temp', '24.5');
+      console.log('Subscribing on temp');
     }
   });
 });
 
 client.on('message', (topic, message) => {
-  // message is Buffer
   console.log(topic.toString() + ': ' + message.toString())
   // si recibo un mensaje puedo hacer lo que quiera aca, como un insert
-  // client.end()
 });

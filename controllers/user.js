@@ -18,7 +18,8 @@ exports.save = (req, res, next) => {
       user.password = hash;
       user.save(err => {
         if (err) return next(err);
-        res.status(200).json(user);
+        res.redirect('/');
+        // res.status(200).json(user);
       });
     });
   });

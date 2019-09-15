@@ -5,9 +5,15 @@ block content
     .col-4
     .col-4
       h2 Registrarse
-      form(method='post' action='/user')
+      form(method='post' action='/api/user')
         .form-group
           input(class='form-control' placeholder='Usuario' type='text' name='username')
+        .form-group
+          input(class='form-control' placeholder='Email' type='text' name='email') 
+        .form-group
+          input(class='form-control' placeholder='Nombre' type='text' name='firstName')
+        .form-group
+          input(class='form-control' placeholder='Apellido' type='text' name='lastName')
         .form-group
           input(class='form-control' placeholder='Contraseña' type='password' name='password')   
         button(type='submit' class='btn btn-primary') Registrarse

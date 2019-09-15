@@ -71,5 +71,25 @@ app.use('/api', usersRouter);
 app.use('/api', readingsRouter);
 app.use('/api', sensorsRouter);
 
+// mqtt subscribe
+const mqtt = require('mqtt');
+const client  = mqtt.connect('mqtt://localhost');
+
+client.on('connect', () => {
+  // subscribe topics on connection
+  console.log('Connected to MQTT broker');
+  client.subscribe('temp', err => {
+    if (!err) {
+      console.log('Subscribing on temp');
+    }
+  });
+});
+
+client.on('message', (topic, message) => {
+  console.log(topic.toString() + ': ' + message.toString())
+  // si recibo un mensaje puedo hacer lo que quiera aca, como un insert
+});
+
+
 // listen
 app.listen(port, () => { console.log(`Server listening on port ${port}`) });
