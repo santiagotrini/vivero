@@ -64,8 +64,12 @@ app.use(express.static('public'));
 // routes
 const siteRouter = require('./routes/site');
 const usersRouter = require('./routes/api/user');
+const readingsRouter = require('./routes/api/reading');
+const sensorsRouter = require('./routes/api/sensor');
 app.use('/', siteRouter);
 app.use('/api', usersRouter);
+app.use('/api', readingsRouter);
+app.use('/api', sensorsRouter);
 
 // listen
 app.listen(port, () => { console.log(`Server listening on port ${port}`) });

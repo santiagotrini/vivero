@@ -18,7 +18,7 @@ exports.save = (req, res, next) => {
       user.password = hash;
       user.save(err => {
         if (err) return next(err);
-        res.send('ok');
+        res.status(200).json(user);
       });
     });
   });
@@ -31,6 +31,16 @@ exports.all = (req, res) => {
     res.status(200).json(users);
   });
 };
+
+// GET /api/user/:id
+exports.one = (req, res, next) => {
+  User.findById(req.params.id, (err, user) => {
+    if (err) return next(err);
+    res.status(200).json(user);
+  });
+};
+
+// PUT /api/user/:id
 
 // DELETE /api/user/:id
 exports.delete = (req, res) => {
