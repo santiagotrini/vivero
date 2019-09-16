@@ -5,7 +5,7 @@ block content
     nav(class='col-2 bg-light sidebar')
       if (user)
         .text-center
-          h4.mt-2 Bienvenido, #{user.firstName}Users
+          h4.mt-2 Bienvenido, #{user.firstName}
           h6.text-muted #{user.role}
           hr
       ul.nav.flex-column
@@ -18,7 +18,7 @@ block content
         li.nav-item
           a(class='nav-link' href='#') Sensores
     main(class='col-10')
-      if (showUsers)
+      if (showUsers && user.role == 'admin')
         include users.pug
       if (showProducts)
         include products.pug  
