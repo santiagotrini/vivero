@@ -42,6 +42,9 @@ exports.one = (req, res, next) => {
 };
 
 // PUT /api/user/:id
+exports.update = (req, res) => {
+  res.send('TODO');
+};
 
 // DELETE /api/user/:id
 exports.delete = (req, res) => {
