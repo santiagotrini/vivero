@@ -93,6 +93,7 @@ client.on('connect', () => {
 client.on('message', (topic, message) => {
   console.log(topic.toString() + ': ' + message.toString())
   // si recibo un mensaje puedo hacer lo que quiera aca, como un insert
+
 });
 
 

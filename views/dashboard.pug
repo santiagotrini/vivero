@@ -9,8 +9,9 @@ block content
           h6.text-muted #{user.role}
           hr
       ul.nav.flex-column
-        li.nav-item
-          a(class='nav-link' href='/dashboard/users') Usuarios
+        if (user.role == 'admin')
+          li.nav-item
+            a(class='nav-link' href='/dashboard/users') Usuarios
         li.nav-item
           a(class='nav-link' href='/dashboard/products') Productos  
         li.nav-item
@@ -18,7 +19,7 @@ block content
         li.nav-item
           a(class='nav-link' href='/dashboard/sensors') Sensores
     main(class='col-10')
-      if (showUsers && user.role == 'admin')
+      if (showUsers)
         include users.pug
       if (showProducts)
         include products.pug 
