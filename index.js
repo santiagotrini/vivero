@@ -66,10 +66,15 @@ const siteRouter = require('./routes/site');
 const usersRouter = require('./routes/api/user');
 const readingsRouter = require('./routes/api/reading');
 const sensorsRouter = require('./routes/api/sensor');
+const productsRouter = require('./routes/api/product');
+const actuatorsRouter = require('./routes/api/actuator');
+
 app.use('/', siteRouter);
 app.use('/api', usersRouter);
 app.use('/api', readingsRouter);
 app.use('/api', sensorsRouter);
+app.use('/api', productsRouter);
+app.use('/api', actuatorsRouter);
 
 // mqtt subscribe
 const mqtt = require('mqtt');
