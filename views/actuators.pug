@@ -1,0 +1,23 @@
+div
+  h2.text-center.mt-3 Dashboard
+  .text-right.mr-2
+    button.btn.btn-primary.btn Nuevo actuador
+  h5.mt-3 Actuadores       
+  table.table.mt-3
+    thead
+      th ID
+      th Tipo
+      th Estado
+      th Producto
+      th Acciones
+    tbody
+      each a in actuators
+        tr
+          td #{a.id}
+          td #{a.actuatorType}
+          td #{a.status}  
+          td #{a.product}
+          td 
+            a(href='#') Toggle &nbsp &nbsp
+            a(href='#') Borrar &nbsp &nbsp
+            a(href='#') Modificar  

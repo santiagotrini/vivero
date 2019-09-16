@@ -1,0 +1,25 @@
+div
+  h2.text-center.mt-3 Dashboard
+  .text-right.mr-2
+    a(class='btn btn-default btn-success' href='#') Nuevo sensor
+  h5.mt-3 Sensores      
+  table.table.mt-3
+    thead
+      th ID
+      th Tipo
+      th Producto
+      th Estado
+      th Ultima lectura
+      th Acciones
+    tbody
+      each s in sensors
+        tr
+          td #{s.id}
+          td #{s.sensorType}
+          td #{s.product}  
+          td #{s.status}
+          td Last read
+          td 
+            a(href='#') Ver lecturas &nbsp &nbsp
+            a(href=`/dashboard/sensor/${s.id}/delete`) Borrar &nbsp &nbsp
+            a(href='#') Modificar  

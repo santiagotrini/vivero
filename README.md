@@ -35,3 +35,9 @@ $ npm run dev
 ```
 
 Ir a http://localhost:3000
+
+## Usuario admin
+
+`user: admin password: 1234`
+
+Recomendacion, instalar Postman `$ yay -S postman` para testear API.

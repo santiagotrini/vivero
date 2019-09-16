@@ -14,12 +14,16 @@ block content
         li.nav-item
           a(class='nav-link' href='/dashboard/products') Productos  
         li.nav-item
-          a(class='nav-link' href='#') Actuadores
+          a(class='nav-link' href='/dashboard/actuators') Actuadores
         li.nav-item
-          a(class='nav-link' href='#') Sensores
+          a(class='nav-link' href='/dashboard/sensors') Sensores
     main(class='col-10')
       if (showUsers && user.role == 'admin')
         include users.pug
       if (showProducts)
-        include products.pug  
+        include products.pug 
+      if (showActuators)
+        include actuators.pug
+      if (showSensors)
+        include sensors.pug     
       
