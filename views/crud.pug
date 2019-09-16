@@ -1,0 +1,62 @@
+.row.mt-3
+  .col-12
+    h1.text-center CRUD dashboard
+.row.mt-3
+  .col-6
+    h2.text-center Usuarios
+    table.table
+      thead
+        th Usuario
+        th Nombre
+        th Apellido
+        th Rol
+        th 
+      tbody
+        each u in users
+          tr
+            td #{u.username}
+            td #{u.firstName}
+            td #{u.lastName}
+            td #{u.role}
+            td
+              button.btn.btn-danger.btn-sm Eliminar 
+    hr
+    form(method='post' action='/api/user')
+      .form-group
+        input(class='form-control' placeholder='Usuario' type='text' name='username')
+      .form-group
+        input(class='form-control' placeholder='Email' type='text' name='email') 
+      .form-group
+        input(class='form-control' placeholder='Nombre' type='text' name='firstName')
+      .form-group
+        input(class='form-control' placeholder='Apellido' type='text' name='lastName')
+      .form-group
+        input(class='form-control' placeholder='Contraseña' type='password' name='password')   
+      button(type='submit' class='btn btn-secondary') Agregar usuario             
+  .col-6
+    h2.text-center Sensores
+    table.table
+      thead
+        th Tipo
+        th Zona
+        th Producto
+        th
+      tbody
+        each s in sensors
+          tr
+            td #{s.sensorType}
+            td #{s.zone}
+            td #{s.product}  
+            td 
+              button.btn.btn-danger.btn-sm Eliminar
+    hr          
+    form(method='post' action='/api/sensor')
+      .form-group
+        input(class='form-control' placeholder='Tipo' type='text' name='sensorType')
+      .form-group
+        input(class='form-control' placeholder='Unidad' type='text' name='unit')
+      .form-group
+        input(class='form-control' placeholder='Zona' type='text' name='zone')              
+      .form-group
+        input(class='form-control' placeholder='Producto' type='text' name='product')
+      button(type='submit' class='btn btn-secondary') Agregar sensor    

@@ -4,34 +4,12 @@ block content
   .row.mt-5
     .col-3
     .col-6
-      h2 Hola, #{user.username}. Estas en modo #{user.role}.    
-      hr
-      if (user.role == 'admin')
-        p Tenes control total.
-      else 
-        p Sos un usuario comun.
-      hr                
+      h2 Hola, #{user.username}. Estas en modo #{user.role}.                  
     .col-3
-  .row.mt-3
-    .col-1
-    .col-10
-      hr
-      table.table
-        thead
-          th Producto
-          th Medicion
-          th Valor
-        tbody
-          tr
-            td Tomates
-            td Temperatura
-            td 25.3 ºC
-          tr
-            td Tomates
-            td Humedad
-            td 80 %     
-      hr
-    .col-1      
+  if (user.role == 'admin')
+    include crud.pug
+  else
+    p Usuario comun, no podes hacer ABMs  
   .row.mt-3
     .col-3
     .col-6

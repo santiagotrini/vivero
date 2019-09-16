@@ -10,7 +10,8 @@ exports.save = (req, res, next) => {
   });
   sensor.save(err => {
     if (err) return next(err);
-    res.status(200).json(sensor);
+    res.redirect('/dashboard');
+    // res.status(200).json(sensor);
   });
 };
 

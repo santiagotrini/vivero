@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const reading = require('../controllers/reading');
+const Reading = require('../models/Reading');
+const Sensor = require('../models/Sensor');
+const User = require('../models/User');
 const user = require('../controllers/user');
 // site routes
 
@@ -25,8 +27,17 @@ router.post('/login',
 router.get('/dashboard',
   require('connect-ensure-login').ensureLoggedIn('/'),
   (req, res) => {
-      // TODO
-      res.render('dashboard', { user: req.user });
+      // pasar toda la data
+      User.find((err, users) => {
+        if (err) return next(err);
+        Sensor.find((err, sensors) => {
+          if (err) return next(err);
+          res.render('dashboard', { user: req.user,
+                                    users: users,
+                                    sensors: sensors
+                                   });
+        });
+      });
     });
 
 // logout
