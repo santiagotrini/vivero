@@ -79,6 +79,7 @@ app.use('/api', actuatorsRouter);
 // mqtt subscribe
 const mqtt = require('mqtt');
 const client  = mqtt.connect('mqtt://localhost');
+const Reading = require('./models/Reading');
 
 client.on('connect', () => {
   // subscribe topics on connection
@@ -91,9 +92,18 @@ client.on('connect', () => {
 });
 
 client.on('message', (topic, message) => {
-  console.log(topic.toString() + ': ' + message.toString())
+  // console.log(topic.toString() + ': ' + message.toString())
   // si recibo un mensaje puedo hacer lo que quiera aca, como un insert
-
+  let data = JSON.parse(message);
+  // console.log(data);
+  const reading = new Reading({
+    sensor: data.sensor,
+    value: data.value
+  });
+  reading.save(err => {
+    if (err) throw err;
+    console.log(JSON.stringify(data) + '\nsaved in database');
+  });
 });
 
 

@@ -11,8 +11,8 @@ exports.save = (req, res, next) => {
   });
   product.save(err => {
     if (err) return next(err);
-    // res.redirect('/dashboard');
-    res.status(200).json(product);
+    res.redirect('/dashboard/products');
+    // res.status(200).json(product);
   });
 };
 

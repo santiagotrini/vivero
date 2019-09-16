@@ -18,5 +18,24 @@ div
           td #{p.minT} ºC - #{p.maxT} ºC 
           td #{p.minH} % - #{p.maxH} %
           td 
-            a(href='#') Borrar &nbsp &nbsp
-            a(href='#') Modificar       
+            a(href=`/dashboard/product/${p.id}/delete`) Borrar &nbsp &nbsp
+            a(href='#') Modificar  
+            
+#newProduct.modal.fade(tabindex='-1')
+   .modal-dialog
+       .modal-content
+          .modal-header
+            h5 Nuevo producto
+          .modal-body
+            form(method='post' action='/api/product')
+              .form-group
+                input(type='text' placeholder='Nombre' name='name')
+              .form-group
+                input(type='text' placeholder='Temperatura minima' name='minT')
+              .form-group
+                input(type='text' placeholder='Temperatura maxima' name='maxT')
+              .form-group
+                input(type='text' placeholder='Humedad minima' name='minH')   
+              .form-group
+                input(type='text' placeholder='Humedad maxima' name='maxH')      
+              input(type='submit' value='Enviar')                           

@@ -66,7 +66,10 @@ router.get('/dashboard/sensors',
       // pasar toda la data
       Sensor.find((err, sensors) => {
         if (err) return next(err);
-        res.render('dashboard', { user: req.user, sensors: sensors, showSensors: true })
+        Product.find((err, products) => {
+          if (err) return next(err);
+            res.render('dashboard', { user: req.user, products: products, sensors: sensors, showSensors: true })
+        });
       });
     });
 
@@ -76,7 +79,10 @@ router.get('/dashboard/actuators',
       // pasar toda la data
       Actuator.find((err, actuators) => {
         if (err) return next(err);
-        res.render('dashboard', { user: req.user, actuators: actuators, showActuators: true })
+        Product.find((err, products) => {
+          if (err) return next(err);
+            res.render('dashboard', { user: req.user, actuators: actuators, products: products, showActuators: true })
+        });
       });
     });
 
@@ -84,6 +90,13 @@ router.get('/dashboard/sensor/:id/delete', (req, res) => {
   Sensor.findByIdAndRemove(req.params.id, err => {
     if (err) return next(err);
     res.redirect('/dashboard/sensors');
+  });
+});
+
+router.get('/dashboard/product/:id/delete', (req, res) => {
+  Product.findByIdAndRemove(req.params.id, err => {
+    if (err) return next(err);
+    res.redirect('/dashboard/products');
   });
 });
 

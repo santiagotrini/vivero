@@ -15,9 +15,29 @@ div
         tr
           td #{a.id}
           td #{a.actuatorType}
-          td #{a.status}  
-          td #{a.product}
+          td(class=(a.status == 'on') ? 'alert-success' : 'alert-danger') #{a.status.toUpperCase()}  
+          each p in products
+            if (a.product == p.id)
+              td #{p.name}  
           td 
             a(href='#') Toggle &nbsp &nbsp
             a(href='#') Borrar &nbsp &nbsp
             a(href='#') Modificar  
+                        
+#newActuator.modal.fade(tabindex='-1')
+   .modal-dialog
+       .modal-content
+          .modal-header
+            h5 Nuevo actuador
+          .modal-body
+            form(method='post' action='/api/actuator')
+              .form-group
+                input(type='text' placeholder='Tipo de actuador' name='actuatorType')
+              .form-group
+                input(type='text' placeholder='Tipo de estado' name='statusType')
+              .form-group
+                input(type='text' placeholder='Estado' name='status')
+              .form-group
+                input(type='text' placeholder='Producto' name='product')         
+              input(type='submit' value='Enviar')                           
+            

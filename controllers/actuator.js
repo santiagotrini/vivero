@@ -10,8 +10,8 @@ exports.save = (req, res, next) => {
   });
   actuator.save(err => {
     if (err) return next(err);
-    // res.redirect('/dashboard');
-    res.status(200).json(actuator);
+    res.redirect('/dashboard/actuators');
+    // res.status(200).json(actuator);
   });
 };
 
