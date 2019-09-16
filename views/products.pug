@@ -1,0 +1,22 @@
+div
+  h2.text-center.mt-3 Dashboard
+  .text-right.mr-2
+    button.btn.btn-primary.btn Nuevo producto
+  h5.mt-3 Productos       
+  table.table.mt-3
+    thead
+      th ID
+      th Nombre
+      th Rango de temperatura
+      th Rango de humedad
+      th Acciones
+    tbody
+      each p in products
+        tr
+          td #{p.id}
+          td #{p.name}
+          td #{p.minT} ºC - #{p.maxT} ºC 
+          td #{p.minH} % - #{p.maxH} %
+          td 
+            a(href='#') Borrar &nbsp &nbsp
+            a(href='#') Modificar       

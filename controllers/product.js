@@ -1,4 +1,4 @@
-const Product = require('../models/product');
+const Product = require('../models/Product');
 
 // POST /api/product
 exports.save = (req, res, next) => {

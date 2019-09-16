@@ -1,4 +1,4 @@
-const Actuator = require('../models/actuator');
+const Actuator = require('../models/Actuator');
 
 // POST /api/actuator
 exports.save = (req, res, next) => {

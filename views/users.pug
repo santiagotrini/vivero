@@ -1,0 +1,26 @@
+div
+  h2.text-center.mt-3 Dashboard
+  .text-right.mr-2
+    button.btn.btn-primary.btn Nuevo usuario
+  h5.mt-3 Usuarios       
+  table.table.mt-3
+    thead
+      th ID
+      th Username
+      th Email
+      th Nombre
+      th Apellido
+      th Rol
+      th Acciones
+    tbody
+      each u in users
+        tr
+          td #{u.id}
+          td #{u.username}
+          td #{u.email}
+          td #{u.firstName}
+          td #{u.lastName}
+          td #{u.role}
+          td 
+            a(href='#') Borrar &nbsp &nbsp
+            a(href='#') Modificar       

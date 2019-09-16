@@ -1,18 +1,25 @@
 extends layout
 
-block content
-  .row.mt-5
-    .col-3
-    .col-6
-      h2 Hola, #{user.username}. Estas en modo #{user.role}.                  
-    .col-3
-  if (user.role == 'admin')
-    include crud.pug
-  else
-    p Usuario comun, no podes hacer ABMs  
-  .row.mt-3
-    .col-3
-    .col-6
-      h4.text-center.mt-5
-        a(href='/logout') Cerrar sesión
-    .col-3          
+block content 
+  .row
+    nav(class='col-2 bg-light sidebar')
+      if (user)
+        .text-center
+          h4.mt-2 Bienvenido, #{user.firstName}Users
+          h6.text-muted #{user.role}
+          hr
+      ul.nav.flex-column
+        li.nav-item
+          a(class='nav-link' href='/dashboard/users') Usuarios
+        li.nav-item
+          a(class='nav-link' href='/dashboard/products') Productos  
+        li.nav-item
+          a(class='nav-link' href='#') Actuadores
+        li.nav-item
+          a(class='nav-link' href='#') Sensores
+    main(class='col-10')
+      if (showUsers)
+        include users.pug
+      if (showProducts)
+        include products.pug  
+      
