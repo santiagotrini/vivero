@@ -10,13 +10,9 @@ const SensorSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  zone: {
-    type: String,
-    required: true
-  },
   product: {
-    type: String,
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product'
   },
   status: {
     type: Boolean,
