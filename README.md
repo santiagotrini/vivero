@@ -41,3 +41,7 @@ Ir a http://localhost:3000
 `user: admin password: 1234`
 
 Recomendacion, instalar Postman `$ yay -S postman` para testear API.
+
+### Deploy a Heroku
+
+Completar...

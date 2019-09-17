@@ -20,10 +20,7 @@ div
             if (s.product == p.id)
               td #{p.name}  
           td #{s.status ? 'Activo' : 'Inactivo'}
-          if (s.id == readings[readings.length - 1].sensor)
-            td #{readings[readings.length - 1].value}
-          else
-            td No hay datos  
+          td No hay datos  
           td 
             a(href='#') Ver lecturas &nbsp &nbsp
             a(href=`/dashboard/sensor/${s.id}/delete`) Borrar &nbsp &nbsp
