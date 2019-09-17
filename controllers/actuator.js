@@ -1,17 +1,23 @@
 const Actuator = require('../models/Actuator');
+const Product = require('../models/Product');
 
 // POST /api/actuator
 exports.save = (req, res, next) => {
-  const actuator = new Actuator({
-    actuatorType: req.body.actuatorType,
-    statusType: req.body.statusType,
-    status: req.body.status,
-    product: req.body.product
-  });
-  actuator.save(err => {
-    if (err) return next(err);
-    res.redirect('/dashboard/actuators');
-    // res.status(200).json(actuator);
+  Product.findOne({ name: req.body.product }, (err, product) => {
+    req.body.product = product.id;
+    req.body.statusType = (req.body.actuatorType == 'Rociador') ? 'toggle' : 'slider';
+    req.body.status = (req.body.statusType == 'toggle') ? 'off' : '100';
+    const actuator = new Actuator({
+      actuatorType: req.body.actuatorType,
+      statusType: req.body.statusType,
+      status: req.body.status,
+      product: req.body.product
+    });
+    actuator.save(err => {
+      if (err) return next(err);
+      res.redirect('/dashboard/actuators');
+      // res.status(200).json(actuator);
+    });
   });
 };
 

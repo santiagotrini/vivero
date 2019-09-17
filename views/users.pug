@@ -1,7 +1,7 @@
 div
   h2.text-center.mt-3 Dashboard
   .text-right.mr-2
-    button.btn.btn-success(data-toggle='modal' data-target='#newUser') Nuevo usuario  
+    button.mt-3.btn.btn-success(data-toggle='modal' data-target='#newUser') Nuevo usuario  
   h5.mt-3 Usuarios       
   table.table.mt-3
     thead
@@ -23,4 +23,30 @@ div
           td #{u.role}
           td 
             a(href='#') Borrar &nbsp &nbsp
-            a(href='#') Modificar       
+            a(href='#') Modificar     
+            
+#newUser.modal.fade(tabindex='-1')
+   .modal-dialog
+       .modal-content
+          .modal-header
+            h5 Nuevo usuario
+          .modal-body
+            form(method='post' action='/api/user')
+              .form-group
+                input(type='text' placeholder='Nombre de usuario' name='username')
+              .form-group
+                input(type='text' placeholder='Email' name='email')
+              .form-group
+                input(type='text' placeholder='Nombre' name='firstName')
+              .form-group
+                input(type='text' placeholder='Apellido' name='lastName')   
+              .form-group
+                label Rol
+                select.form-control(name='role')   
+                  option user
+                  option admin
+              .form-group
+                input(type='password' placeholder='Password' name='password')   
+              input(type='submit' value='Enviar')                           
+            
+              

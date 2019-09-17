@@ -1,7 +1,7 @@
 div
   h2.text-center.mt-3 Dashboard
   .text-right.mr-2
-    button.btn.btn-success(data-toggle='modal' data-target='#newActuator') Nuevo actuador
+    button.btn.mt-3.btn-success(data-toggle='modal' data-target='#newActuator') Nuevo actuador
   h5.mt-3 Actuadores       
   table.table.mt-3
     thead
@@ -32,12 +32,14 @@ div
           .modal-body
             form(method='post' action='/api/actuator')
               .form-group
-                input(type='text' placeholder='Tipo de actuador' name='actuatorType')
+                label Tipo de actuador
+                select.form-control(name='actuatorType')
+                  option Rociador
+                  option Sombra
               .form-group
-                input(type='text' placeholder='Tipo de estado' name='statusType')
-              .form-group
-                input(type='text' placeholder='Estado' name='status')
-              .form-group
-                input(type='text' placeholder='Producto' name='product')         
+                label Producto
+                select.form-control(name='product')
+                  each p in products
+                    option #{p.name}            
               input(type='submit' value='Enviar')                           
             
