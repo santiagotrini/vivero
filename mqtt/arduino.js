@@ -1,5 +1,7 @@
 const mqtt = require('mqtt');
-const client  = mqtt.connect('mqtt://localhost');
+const broker = 'mqtt://test.mosquitto.org';
+const client = mqtt.connect(broker);
+// const client  = mqtt.connect('mqtt://localhost');
 
 client.on('connect', () => {
     setInterval(() => {
@@ -10,6 +12,6 @@ client.on('connect', () => {
         value: randomTemp.toFixed(2)
       };
       let json = JSON.stringify(data);
-      client.publish('temp', json);
+      client.publish('temp-vivero-inet', json);
     }, 12000);
   });

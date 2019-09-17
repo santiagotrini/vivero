@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // config
-const port = 3000;
-const db = 'mongodb://localhost/vivero';
+const port = process.env.PORT || 3000;
+const db = process.env.MONGODB_URI || 'mongodb://localhost/vivero';
 
 // app object
 const app = express();
@@ -78,15 +78,17 @@ app.use('/api', actuatorsRouter);
 
 // mqtt subscribe
 const mqtt = require('mqtt');
-const client  = mqtt.connect('mqtt://localhost');
+const broker = 'mqtt://test.mosquitto.org';
+const client = mqtt.connect(broker);
+// const client  = mqtt.connect('mqtt://localhost');
 const Reading = require('./models/Reading');
 
 client.on('connect', () => {
   // subscribe topics on connection
   console.log('Connected to MQTT broker');
-  client.subscribe('temp', err => {
+  client.subscribe('temp-vivero-inet', err => {
     if (!err) {
-      console.log('Subscribing on temp');
+      console.log('Subscribing on temp-vivero-inet');
     }
   });
 });
