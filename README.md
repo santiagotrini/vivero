@@ -38,10 +38,35 @@ Ir a http://localhost:3000
 
 ## Usuario admin
 
-`user: admin password: 1234`
+```
+user: admin
+password: 1234
+```
 
 Recomendacion, instalar Postman `$ yay -S postman` para testear API.
 
 ### Deploy a Heroku
 
-Completar...
+Hacerse una cuenta en [Heroku](https://www.heroku.com) e instalar la CLI de Heroku.
+
+```
+$ yay -S heroku-cli
+```
+
+Necesitas un `Procfile` para que Heroku sepa como iniciar tu app.
+
+```
+$ echo "web: npm start" > Procfile
+```
+
+Desde la terminal: logearse, crear la app y pushear a Heroku
+
+```
+$ heroku login
+$ heroku create nombre-de-app
+$ git push heroku master
+```
+
+Desde el dashboard de Heroku en el navegador setear una variable de configuracion con el nombre de `MONGODB_URI` y darle el valor de tu base de datos en mLab o algun proveedor similar.
+
+Por ultimo ir a https://nombre-de-app.herokuapp.com para ver el resultado.
