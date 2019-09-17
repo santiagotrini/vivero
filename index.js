@@ -18,7 +18,7 @@ mongoose.set('useFindAndModify', false);
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
-    console.log("DB connected");
+    console.log(`DB connected @ ${db}`);
   })
 .catch(err => console.error(`Connection error ${err}`));
 
@@ -86,7 +86,7 @@ const Reading = require('./models/Reading');
 
 client.on('connect', () => {
   // subscribe topics on connection
-  console.log('Connected to MQTT broker');
+  console.log(`Web app connected to ${broker}`);
   client.subscribe('temp-vivero-inet', err => {
     if (!err) {
       console.log('Subscribing on temp-vivero-inet');

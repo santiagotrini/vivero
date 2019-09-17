@@ -1,10 +1,11 @@
 const mqtt = require('mqtt');
-// process.env.BROKER_URI = 'mqtt://test.mosquitto.org';
-const broker = process.env.BROKER_URI || 'mqtt://localhost';
+let production = false;
+const broker = production ? 'mqtt://test.mosquitto.org' : 'mqtt://localhost';
 const client = mqtt.connect(broker);
 // const client  = mqtt.connect('mqtt://localhost');
 
 client.on('connect', () => {
+    console.log(`Arduino connected to ${broker}`);
     setInterval(() => {
       // publish data to broker every 2 seconds
       let randomTemp = Math.random() * (30 - 5) + 5;
