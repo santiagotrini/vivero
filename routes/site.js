@@ -68,7 +68,9 @@ router.get('/dashboard/sensors',
         if (err) return next(err);
         Product.find((err, products) => {
           if (err) return next(err);
-            res.render('dashboard', { user: req.user, products: products, sensors: sensors, showSensors: true })
+          Reading.find((err, readings) => {
+            res.render('dashboard', { user: req.user, products: products, sensors: sensors, showSensors: true, readings: readings })
+          });
         });
       });
     });
