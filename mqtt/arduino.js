@@ -1,5 +1,6 @@
 const mqtt = require('mqtt');
-const broker = 'mqtt://test.mosquitto.org';
+// process.env.BROKER_URI = 'mqtt://test.mosquitto.org';
+const broker = process.env.BROKER_URI || 'mqtt://localhost';
 const client = mqtt.connect(broker);
 // const client  = mqtt.connect('mqtt://localhost');
 

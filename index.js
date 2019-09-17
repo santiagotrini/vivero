@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 // config
 const port = process.env.PORT || 3000;
 const db = process.env.MONGODB_URI || 'mongodb://localhost/vivero';
+const broker = process.env.BROKER_URI || 'mqtt://localhost';
 
 // app object
 const app = express();
@@ -78,7 +79,7 @@ app.use('/api', actuatorsRouter);
 
 // mqtt subscribe
 const mqtt = require('mqtt');
-const broker = 'mqtt://test.mosquitto.org';
+
 const client = mqtt.connect(broker);
 // const client  = mqtt.connect('mqtt://localhost');
 const Reading = require('./models/Reading');
