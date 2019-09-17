@@ -1,4 +1,5 @@
 const mqtt = require('mqtt');
+// set true para usar el script con la app en Heroku 
 let production = false;
 const broker = production ? 'mqtt://test.mosquitto.org' : 'mqtt://localhost';
 const client = mqtt.connect(broker);

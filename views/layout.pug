@@ -9,17 +9,20 @@ html(lang='es')
     
     title Vivero IoT
   body
-    nav.navbar.navbar-dark.bg-dark
-      a(class='navbar-brand col-sm-3 col-md-2 mr-0' href='#') Vivero IoT
-      ul.navbar-nav 
-        li.nav-item
-          if user
-            a(class='nav-link' href='/logout') Logout 
-          else
-            a(class='nav-link' href='/login') Login  
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a(class='navbar-brand' href='#') Vivero IoT
+      button.ml-auto.navbar-toggler(type='button' data-toggle='collapse' data-target='#navContent')
+        span.navbar-toggler-icon 
+      .collapse.navbar-collapse#navContent  
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            if user
+              a(class='nav-link' href='/logout') Logout 
+            else
+              a(class='nav-link' href='/login') Login  
     div(class='container-fluid')
       block content
-      footer.fixed-bottom
+      footer
         hr
         .text-center  
           a(href='https://github.com/santiagotrini/vivero' target='_blank' class='text-center' style='font-size: 48px; color: black;')

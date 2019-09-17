@@ -2,7 +2,7 @@ extends layout
 
 block content 
   .row
-    nav(class='col-2 bg-light sidebar')
+    nav(class='col-sm-2 bg-light sidebar')
       if (user)
         .text-center
           h4.mt-2 Bienvenido, #{user.firstName}
@@ -18,7 +18,7 @@ block content
           a(class='nav-link' href='/dashboard/actuators') Actuadores
         li.nav-item
           a(class='nav-link' href='/dashboard/sensors') Sensores
-    main(class='col-10')
+    main(class='col-sm-10')
       if (showUsers)
         include users.pug
       if (showProducts)
