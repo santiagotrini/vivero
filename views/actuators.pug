@@ -15,14 +15,27 @@ div
         tr
           td #{a.id}
           td #{a.actuatorType}
-          td(class=(a.status == 'on') ? 'alert-success' : 'alert-danger') #{a.status.toUpperCase()}  
+          if (a.actuatorType == 'Rociador')
+            td(class=(a.status == 'on') ? 'alert-success' : 'alert-danger') #{a.status.toUpperCase()}
+          else
+            td #{a.status} %    
           each p in products
             if (a.product == p.id)
               td #{p.name}  
-          td 
-            a(href='#') Toggle &nbsp &nbsp
-            a(href='#') Borrar &nbsp &nbsp
-            a(href='#') Modificar  
+          td
+            if (a.actuatorType == 'Rociador') 
+              a(href='#' class='mr-2')
+                if (a.status == 'on')
+                  i(class='fa fa-toggle-on' style='font-size: 24px; color: black;')
+                else
+                  i(class='fa fa-toggle-off' style='font-size: 24px; color: black;')     
+            else
+              a(href='#' class='mr-2')
+                i(class='fa fa-wrench' style='font-size: 24px; color: black;')   
+            a(href='#' class='mx-3') 
+              i(class='fa fa-trash' style='font-size: 24px; color: red;')
+            a(href='#' class='ml-2')
+              i(class='fa fa-edit' style='font-size: 24px; color: green;') 
                         
 #newActuator.modal.fade(tabindex='-1')
    .modal-dialog

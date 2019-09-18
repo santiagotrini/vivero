@@ -22,9 +22,13 @@ div
           td #{s.status ? 'Activo' : 'Inactivo'}
           td No hay datos  
           td 
-            a(href='#') Ver lecturas &nbsp &nbsp
-            a(href=`/dashboard/sensor/${s.id}/delete`) Borrar &nbsp &nbsp
-            a(href='#') Modificar  
+            a.mx-2(href=`/dashboard/sensor/${s.id}/readings`) 
+              i.fa.fa-file(style='font-size: 24px; color: black;')
+            a(href=`/dashboard/sensor/${s.id}/delete` class='mx-3') 
+              i(class='fa fa-trash' style='font-size: 24px; color: red;')
+            a(href='#' class='ml-2')
+              i(class='fa fa-edit' style='font-size: 24px; color: green;') 
+            
 
 #newSensor.modal.fade(tabindex='-1')
    .modal-dialog

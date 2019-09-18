@@ -75,6 +75,16 @@ router.get('/dashboard/sensors',
       });
     });
 
+router.get('/dashboard/sensor/:id/readings', (req, res, next) => {
+  Reading.find({ sensor: req.params.id }, (err, readings) => {
+    if (err) return next(err);
+    Sensor.findById(req.params.id, (err, sensor) => {
+      if (err) return next(err);
+      res.render('dashboard', { sensor: sensor, user: req.user, readings: readings, showReadings: true });
+    });
+  });
+});
+
 router.get('/dashboard/actuators',
   require('connect-ensure-login').ensureLoggedIn('/'),
   (req, res) => {

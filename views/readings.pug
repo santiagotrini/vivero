@@ -1,0 +1,16 @@
+div
+  h2.text-center.mt-3 Dashboard         
+  h5.mt-3 Lecturas del sensor #{sensor.id}
+  table.table.mt-3
+    thead
+      th ID
+      th Timestamp
+      th Tipo
+      th Valor
+    tbody
+      each r in readings
+        tr
+          td #{r.id}
+          td #{r.timestamp.toLocaleString()}
+          td #{sensor.sensorType}  
+          td #{r.value} #{sensor.unit}
