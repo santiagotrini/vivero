@@ -24,7 +24,7 @@ div
               td #{p.name}  
           td
             if (a.actuatorType == 'Rociador') 
-              a(href='#' class='mr-2')
+              a(href=`/dashboard/actuator/${a.id}/toggle` class='mr-2')
                 if (a.status == 'on')
                   i(class='fa fa-toggle-on' style='font-size: 24px; color: black;')
                 else

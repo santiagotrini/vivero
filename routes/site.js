@@ -112,6 +112,19 @@ router.get('/dashboard/product/:id/delete', (req, res) => {
   });
 });
 
+router.get('/dashboard/actuator/:id/toggle', (req, res) => {
+  Actuator.findById(req.params.id, (err, actuator) => {
+    if (err) return next(err);
+    if (actuator.status == 'on') actuator.status = 'off';
+    else actuator.status = 'on';
+    // aca habria que publicar al broker el nuevo estado, falta hacer
+    actuator.save(err => {
+      if (err) return next(err);
+      res.redirect('/dashboard/actuators');
+    })
+  });
+});
+
 // logout
 router.get('/logout',
   (req, res) => {
