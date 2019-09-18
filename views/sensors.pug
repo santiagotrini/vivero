@@ -20,7 +20,14 @@ div
             if (s.product == p.id)
               td #{p.name}  
           td #{s.status ? 'Activo' : 'Inactivo'}
-          td No hay datos  
+          each r, index in readings
+            if (r.sensor == s.id)
+              td #{r.value} #{s.unit}
+              - break
+            if (index == readings.length - 1)
+              td No hay datos    
+          else
+            td No hay datos           
           td 
             a.mx-2(href=`/dashboard/sensor/${s.id}/readings`) 
               i.fa.fa-file(style='font-size: 24px; color: black;')

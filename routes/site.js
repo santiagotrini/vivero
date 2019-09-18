@@ -68,7 +68,7 @@ router.get('/dashboard/sensors',
         if (err) return next(err);
         Product.find((err, products) => {
           if (err) return next(err);
-          Reading.find((err, readings) => {
+          Reading.find().sort({timestamp: -1, sensor: 1}).exec((err, readings) => {
             res.render('dashboard', { user: req.user, products: products, sensors: sensors, showSensors: true, readings: readings })
           });
         });
@@ -76,7 +76,7 @@ router.get('/dashboard/sensors',
     });
 
 router.get('/dashboard/sensor/:id/readings', (req, res, next) => {
-  Reading.find({ sensor: req.params.id }, (err, readings) => {
+  Reading.find({ sensor: req.params.id }).sort('-timestamp').exec((err, readings) => {
     if (err) return next(err);
     Sensor.findById(req.params.id, (err, sensor) => {
       if (err) return next(err);
