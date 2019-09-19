@@ -112,6 +112,13 @@ router.get('/dashboard/product/:id/delete', (req, res) => {
   });
 });
 
+router.get('/dashboard/user/:id/delete', (req, res) => {
+  User.findByIdAndRemove(req.params.id, err => {
+    if (err) return next(err);
+    res.redirect('/dashboard/users');
+  });
+});
+
 router.get('/dashboard/actuator/:id/toggle', (req, res) => {
   Actuator.findById(req.params.id, (err, actuator) => {
     if (err) return next(err);

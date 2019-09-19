@@ -30,12 +30,26 @@ div
                 else
                   i(class='fa fa-toggle-off' style='font-size: 24px; color: black;')     
             else
-              a(href='#' class='mr-2')
+              a(href='#' class='mr-2' data-toggle='modal' data-target='#slider')
                 i(class='fa fa-wrench' style='font-size: 24px; color: black;')   
             a(href='#' class='mx-3') 
               i(class='fa fa-trash' style='font-size: 24px; color: red;')
             a(href='#' class='ml-2')
               i(class='fa fa-edit' style='font-size: 24px; color: green;') 
+
+#slider.modal.fade(tabindex='-1')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5 Sombra
+      .modal-body
+        // es cualquiera pero no se como pasar el id del actuador desde la tabla al modal
+        form(method='post' action='/api/actuator/5d81a84447f81d10723ec5fd/update')
+          output#rangeOut 50 %
+          input#rangeInput.custom-range(name='status' type='range' oninput='rangeOut.value = rangeInput.value + " %"')
+          input(type='submit' value='Actualizar')  
+
+
                         
 #newActuator.modal.fade(tabindex='-1')
    .modal-dialog
@@ -55,4 +69,4 @@ div
                   each p in products
                     option #{p.name}            
               input(type='submit' value='Enviar')                           
-            
+          

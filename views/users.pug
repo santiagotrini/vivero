@@ -22,8 +22,10 @@ div
           td #{u.lastName}
           td #{u.role}
           td 
-            a(href='#') Borrar &nbsp &nbsp
-            a(href='#') Modificar     
+            a.mx-3(href=`/dashboard/user/${u.id}/delete`)
+              i(class='fa fa-trash' style='font-size: 24px; color: red;')
+            a.mx-3(href='#')
+              i(class='fa fa-edit' style='font-size: 24px; color: green;')
             
 #newUser.modal.fade(tabindex='-1')
    .modal-dialog

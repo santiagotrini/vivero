@@ -19,8 +19,10 @@
             td #{p.minT} ºC - #{p.maxT} ºC 
             td #{p.minH} % - #{p.maxH} %
             td 
-              a(href=`/dashboard/product/${p.id}/delete`) Borrar &nbsp &nbsp
-              a(href='#') Modificar  
+              a.mx-3(href=`/dashboard/product/${p.id}/delete`)
+                i(class='fa fa-trash' style='font-size: 24px; color: red;')
+              a.mx-3(href='#')
+                i(class='fa fa-edit' style='font-size: 24px; color: green;')  
               
 #newProduct.modal.fade(tabindex='-1')
    .modal-dialog
