@@ -44,7 +44,7 @@ div
         h5 Sombra
       .modal-body
         // es cualquiera pero no se como pasar el id del actuador desde la tabla al modal
-        form(method='post' action='/api/actuator/5d81a84447f81d10723ec5fd/update')
+        form(method='post' action='/api/actuator/5d824a3052a76700173634c2/update')
           output#rangeOut 50 %
           input#rangeInput.custom-range(name='status' type='range' oninput='rangeOut.value = rangeInput.value + " %"')
           input(type='submit' value='Actualizar')  
